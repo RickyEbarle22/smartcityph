@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="stylesheet" href="<?= base_url('css/main.css') ?>?v=2">
+<link rel="stylesheet" href="<?= base_url('css/main.css') ?>?v=3">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -152,12 +152,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
-<script src="<?= base_url('js/main.js') ?>?v=2"></script>
-<script src="<?= base_url('js/search.js') ?>?v=2"></script>
+<script src="<?= base_url('js/main.js') ?>?v=3"></script>
+<script src="<?= base_url('js/search.js') ?>?v=3"></script>
 <?php if (! empty($with_hero3d)): ?>
-  <script src="<?= base_url('js/hero3d.js') ?>?v=2"></script>
+  <script src="<?= base_url('js/hero3d.js') ?>?v=3"></script>
 <?php endif; ?>
-<script src="<?= base_url('js/animations.js') ?>?v=2"></script>
+<script src="<?= base_url('js/animations.js') ?>?v=3"></script>
 <script>if (window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
 <?= $extraJs ?? '' ?>
 </body>

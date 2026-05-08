@@ -29,7 +29,10 @@
       "Bash(grep -oE \"<h[23]>[^<]{20,80}</h[23]>\")",
       "Bash(curl -s \"http://127.0.0.1:8085/community-reports?status=resolved\")",
       "Bash(curl -s \"http://127.0.0.1:8085/community-reports\")",
-      "Bash(git -c 'user.name=Ricky Ebarle' -c user.email=ebarlericky836@gmail.com commit -m 'feat: admin-public CRUD round-trip + Community Reports *)"
+      "Bash(git -c 'user.name=Ricky Ebarle' -c user.email=ebarlericky836@gmail.com commit -m 'feat: admin-public CRUD round-trip + Community Reports *)",
+      "Bash(taskkill //F //IM php.exe)",
+      "Bash(git -c 'user.name=Ricky Ebarle' -c user.email=ebarlericky836@gmail.com commit -m 'fix: homepage category cards \"only some showing\" *)",
+      "Bash(git push *)"
     ]
   }
 }

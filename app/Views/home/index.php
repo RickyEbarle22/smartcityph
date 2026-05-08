@@ -64,7 +64,7 @@ ob_start();
         foreach ($cats as $c):
           $count = (int) ($categoryCounts[$c[0]] ?? 0);
       ?>
-      <a class="cat-card <?= $c[1] ?>" href="<?= base_url('services?category=' . urlencode($c[0])) ?>" data-aos="fade-up">
+      <a class="cat-card <?= $c[1] ?>" href="<?= base_url('services?category=' . urlencode($c[0])) ?>">
         <div class="cat-ico"><i class="fa-solid <?= $c[2] ?>"></i></div>
         <h4><?= esc($c[0]) ?></h4>
         <p><?= esc($c[3]) ?></p>
