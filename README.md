@@ -1,69 +1,100 @@
-# CodeIgniter 4 Application Starter
+# SmartCity PH
 
-## What is CodeIgniter?
+A next-generation Philippine government services portal — a stunning, dark, glassmorphic, citizen-first web app where Filipinos can discover, search, and access government services across all 17 regions.
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+> Built with CodeIgniter 4 · Three.js · GSAP · Leaflet · pure HTML/CSS/JS — themed with the Philippine flag colors (blue, red, gold) on a deep-space dark canvas.
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+---
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## ✨ Highlights
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+- **3D animated city skyline** hero (Three.js r128) with the Philippine sun
+- **GSAP** scroll-triggered cinematic animations
+- **Region-based service search** with autocomplete (17 PH regions)
+- **20+ real Philippine government services** across 8 categories
+- **Citizen accounts** — register, sign in, edit profile, leave service feedback
+- **Admin panel** with full CRUD for services, news, regions, users, reports
+- **Interactive Leaflet map** with CartoDB Dark tiles (no API key)
+- **Report an Issue** with photo upload + map location pin
+- **Visual report tracker** with timeline progress UI
+- **Government Transparency** dashboard with project budgets and progress
+- **Emergency hotline directory** (911, 117, 160, 143, 1555, 8888, …)
+- **Service ratings & reviews** (one per user, per service)
+- **WCAG-aware** dark UI with high contrast and visible focus rings
+- **Mobile-responsive** with reduced 3D complexity for smaller devices
 
-## Installation & updates
+## 🛠️ Tech Stack
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+| Layer | Technology |
+|---|---|
+| Backend | CodeIgniter 4 (PHP 8.1+) |
+| Database | MySQL via XAMPP — `127.0.0.1`, port `3306`, db `smartcityph` |
+| Frontend | Vanilla HTML / CSS / JS (no React, Vue, or Tailwind) |
+| 3D | Three.js r128 (CDN) |
+| Animations | GSAP 3.12 + ScrollTrigger + AOS |
+| Maps | Leaflet 1.9 + CartoDB Dark |
+| Type | Poppins (headings) + Inter (body) |
+| Icons | Font Awesome 6 |
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
+## 🚀 Quick Start
 
-## Setup
+```bash
+# 1. Clone
+git clone https://github.com/RickyEbarle22/smartcityph.git
+cd smartcityph
 
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
+# 2. Install dependencies
+composer install
 
-## Important Change with index.php
+# 3. Set up environment
+cp env .env
+# Edit .env to match your XAMPP MySQL settings (port 3306 by default)
 
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
+# 4. Create the database
+mysql -u root -e "CREATE DATABASE smartcityph CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci"
 
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
+# 5. Run migrations and seed
+php spark migrate --all
+php spark db:seed SmartCitySeeder
 
-**Please** read the user guide for a better explanation of how CI4 works!
+# 6. Run the dev server
+php spark serve
+# Or place inside XAMPP htdocs and visit http://localhost/smartcityph/public/
+```
 
-## Repository Management
+## 🔑 Default credentials
 
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
+- **Admin**: `admin / admin123` → `/admin-login`
+- **Sample citizen**: `juan@email.com / citizen123`
 
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
+## 🗺️ Routes Overview
 
-## Server Requirements
+Public:
+- `/` — 3D hero homepage
+- `/services`, `/services/{slug}`, `/services/search`
+- `/news`, `/news/{slug}`
+- `/reports` (file an issue)
+- `/track` (track a report by reference)
+- `/transparency` — project & budget dashboard
+- `/about`, `/contact`, `/emergency`
 
-PHP version 8.2 or higher is required, with the following extensions installed:
+Citizen:
+- `/login`, `/register`, `/logout`
+- `/user/dashboard`, `/user/profile`, `/user/reports`
 
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
+Admin (under `auth` filter):
+- `/admin-login`, `/admin-logout`
+- `/admin` (dashboard)
+- `/admin/services|news|reports|regions|users` — full CRUD
 
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - The end of life date for PHP 8.1 was December 31, 2025.
-> - If you are still using below PHP 8.2, you should upgrade immediately.
-> - The end of life date for PHP 8.2 will be December 31, 2026.
+API (JSON):
+- `/api/services/search?q=&region_id=`
+- `/api/regions`
 
-Additionally, make sure that the following extensions are enabled in your PHP:
+## 🇵🇭 Built by
 
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+**Ricky G. Ebarle** — BSIT 3rd Year, CPSC
+
+## 📄 License
+
+MIT — built for the Filipino people.

@@ -7,7 +7,17 @@
       "Bash(git -c user.name=\"Ricky Ebarle\" -c user.email=\"ebarlericky836@gmail.com\" commit -m \"progress: config, models, migrations, seeders\")",
       "Bash(git -c user.name=\"Ricky Ebarle\" -c user.email=\"ebarlericky836@gmail.com\" commit -m \"progress: public + admin controllers\")",
       "Bash(git -c user.name=\"Ricky Ebarle\" -c user.email=\"ebarlericky836@gmail.com\" commit -m \"progress: CSS design system + 3D hero + GSAP + search JS\")",
-      "Bash(git -c user.name=\"Ricky Ebarle\" -c user.email=\"ebarlericky836@gmail.com\" commit -m \"progress: views \\(layouts, public, user, admin\\)\")"
+      "Bash(git -c user.name=\"Ricky Ebarle\" -c user.email=\"ebarlericky836@gmail.com\" commit -m \"progress: views \\(layouts, public, user, admin\\)\")",
+      "Bash(php -v)",
+      "Bash(php *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8085/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8085/services)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8085/news)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8085/reports)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8085/transparency)",
+      "Bash(curl -s -o /dev/null -w \"admin-login: %{http_code}\\\\n\" http://127.0.0.1:8085/admin-login)",
+      "Bash(curl -s http://127.0.0.1:8085/api/regions)",
+      "Bash(curl -s http://127.0.0.1:8085/api/services/search?q=PhilHealth)"
     ]
   }
 }
