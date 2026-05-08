@@ -8,7 +8,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
-<link rel="stylesheet" href="<?= base_url('css/main.css') ?>?v=1">
+<link rel="stylesheet" href="<?= base_url('css/main.css') ?>?v=2">
 </head>
 <body>
 <?php $current = strtolower(trim(uri_string() ?: '/')); ?>
@@ -42,6 +42,6 @@
     <?= $content ?? '' ?>
   </main>
 </div>
-<script src="<?= base_url('js/main.js') ?>?v=1"></script>
+<script src="<?= base_url('js/main.js') ?>?v=2"></script>
 </body>
 </html>
