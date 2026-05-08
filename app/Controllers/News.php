@@ -11,16 +11,19 @@ class News extends BaseController
         $news     = new NewsModel();
         $category = $this->request->getGet('category');
 
-        $builder = $news->where('is_published', 1);
+        // Run featured() first — it ends in ->first() which resets the builder.
+        $featured = empty($category) ? $news->featured() : null;
+
+        $listing = new NewsModel();
+        $listing->where('is_published', 1);
         if ($category) {
-            $builder = $builder->where('category', $category);
+            $listing->where('category', $category);
         }
+        $items = $listing->orderBy('published_at', 'DESC')->paginate(9);
+        $pager = $listing->pager;
 
-        $featured = $news->featured();
-        $items    = $builder->orderBy('published_at', 'DESC')->paginate(9);
-        $pager    = $news->pager;
-
-        $cats = $news->select('category')
+        $catsModel = new NewsModel();
+        $cats = $catsModel->select('category')
             ->where('is_published', 1)
             ->groupBy('category')
             ->find();

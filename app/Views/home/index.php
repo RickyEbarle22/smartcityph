@@ -111,6 +111,40 @@ ob_start();
   </div>
 </section>
 
+<!-- ── LATEST SERVICES (newly added) ──────────────────────── -->
+<?php if (! empty($latestServices)): ?>
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Recently Added</span>
+      <h2>Latest services</h2>
+      <p>Newly published government services — added by SmartCity PH administrators.</p>
+    </div>
+    <div class="svc-grid">
+      <?php foreach ($latestServices as $s): ?>
+        <a class="svc-card float-card" href="<?= base_url('services/' . $s['slug']) ?>">
+          <div class="svc-icon"><i class="fa-solid <?= esc($s['icon'] ?: 'fa-cog') ?>"></i></div>
+          <span class="tag"><?= esc($s['category']) ?></span>
+          <h3><?= esc($s['name']) ?></h3>
+          <p><?= esc(character_limiter($s['short_desc'] ?? '', 110)) ?></p>
+          <div class="meta">
+            <span class="agency"><?= esc($s['agency'] ?: 'Gov.PH') ?></span>
+            <?php if ((int) $s['is_nationwide'] === 1): ?>
+              <span class="nationwide"><i class="fa-solid fa-globe"></i> Nationwide</span>
+            <?php elseif (! empty($s['region_name'])): ?>
+              <span style="color:var(--text-muted);font-size:0.78rem;"><?= esc($s['region_name']) ?></span>
+            <?php endif; ?>
+          </div>
+        </a>
+      <?php endforeach; ?>
+    </div>
+    <div class="text-center mt-4">
+      <a class="btn btn-outline" href="<?= base_url('services') ?>">Browse all services <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+
 <!-- ── INTERACTIVE MAP ─────────────────────────────────── -->
 <section class="section map-section">
   <div class="container">
@@ -193,6 +227,41 @@ ob_start();
     </div>
     <div class="text-center mt-4">
       <a class="btn btn-outline" href="<?= base_url('news') ?>">View All News <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+<?php endif; ?>
+
+<!-- ── RECENT COMMUNITY REPORTS ──────────────────────────── -->
+<?php if (! empty($recentReports)): ?>
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <span class="kicker">Civic Activity</span>
+      <h2>Recent community reports</h2>
+      <p>Anonymized snapshot of issues filed by your fellow Filipinos and how they're being handled.</p>
+    </div>
+    <div class="glass-card" style="padding:18px;overflow:hidden;">
+      <table class="data" style="width:100%;border-collapse:collapse;">
+        <thead><tr><th>Reference</th><th>Category</th><th>Location</th><th>Region</th><th>Status</th><th>Priority</th><th>Date</th></tr></thead>
+        <tbody>
+          <?php foreach ($recentReports as $r): ?>
+            <tr>
+              <td><span style="font-family:var(--font-head);font-weight:700;color:var(--gold);"><?= esc($r['reference']) ?></span></td>
+              <td><?= esc($r['category']) ?></td>
+              <td style="max-width:240px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--text-secondary);"><?= esc(character_limiter($r['location'], 50)) ?></td>
+              <td style="color:var(--text-muted);font-size:0.85rem;"><?= esc($r['region_name'] ?? '—') ?></td>
+              <td><span class="badge badge-<?= esc($r['status']) ?>"><?= esc($r['status']) ?></span></td>
+              <td><span class="badge badge-<?= esc($r['priority']) ?>"><?= esc($r['priority']) ?></span></td>
+              <td style="color:var(--text-muted);font-size:0.85rem;"><?= esc(date('M j', strtotime($r['created_at']))) ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center mt-4">
+      <a class="btn btn-outline" href="<?= base_url('community-reports') ?>">View all community reports <i class="fa-solid fa-arrow-right"></i></a>
+      <a class="btn btn-primary" href="<?= base_url('reports') ?>" style="margin-left:8px;"><i class="fa-solid fa-flag"></i> File a Report</a>
     </div>
   </div>
 </section>

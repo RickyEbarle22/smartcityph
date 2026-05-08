@@ -20,8 +20,14 @@
     <?php if (! empty($a['image'])): ?><p class="form-help">Current: <?= esc($a['image']) ?></p><?php endif; ?>
   </div>
   <div class="grid grid-2">
-    <label class="checkbox-row"><input type="checkbox" name="is_featured" value="1" <?= ! empty($a['is_featured']) ? 'checked' : '' ?>> Featured</label>
-    <label class="checkbox-row"><input type="checkbox" name="is_published" value="1" <?= empty($a) || ! empty($a['is_published']) ? 'checked' : '' ?>> Published</label>
+    <div>
+      <label class="checkbox-row"><input type="checkbox" name="is_featured" value="1" <?= ! empty($a['is_featured']) ? 'checked' : '' ?>> Featured</label>
+      <p class="form-help">Featured on the /news page (large hero card).</p>
+    </div>
+    <div>
+      <label class="checkbox-row"><input type="checkbox" name="is_published" value="1" <?= empty($a) || ! empty($a['is_published']) ? 'checked' : '' ?>> Published</label>
+      <p class="form-help">Visible at /news. Uncheck to keep as a Draft.</p>
+    </div>
   </div>
   <div style="display:flex;gap:10px;margin-top:24px;">
     <button class="btn btn-primary" type="submit"><i class="fa-solid fa-save"></i> <?= $isEdit ? 'Update' : 'Create' ?> Article</button>

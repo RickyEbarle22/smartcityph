@@ -51,6 +51,12 @@ class ReportsModel extends Model
             ->join('users', 'users.id = reports.user_id', 'left');
     }
 
+    public function publicListing()
+    {
+        return $this->select('reports.id, reports.reference, reports.category, reports.location, reports.status, reports.priority, reports.region_id, reports.latitude, reports.longitude, reports.created_at, reports.resolved_at, regions.name as region_name')
+            ->join('regions', 'regions.id = reports.region_id', 'left');
+    }
+
     public function statusCounts(): array
     {
         $rows = $this->select('status, COUNT(*) as total')

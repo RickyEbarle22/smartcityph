@@ -28,6 +28,34 @@ class Reports extends BaseController
         ]);
     }
 
+    public function community()
+    {
+        $reports  = new ReportsModel();
+        $regions  = (new RegionsModel())->regionsOnly()->find();
+
+        $status   = $this->request->getGet('status');
+        $category = $this->request->getGet('category');
+        $regionId = $this->request->getGet('region') ? (int) $this->request->getGet('region') : null;
+
+        $b = $reports->publicListing();
+        if ($status)   $b = $b->where('reports.status', $status);
+        if ($category) $b = $b->where('reports.category', $category);
+        if ($regionId) $b = $b->where('reports.region_id', $regionId);
+
+        $items = $b->orderBy('reports.created_at', 'DESC')->paginate(15);
+
+        return view('reports/community', [
+            'title'        => 'Community Reports — SmartCity PH',
+            'items'        => $items,
+            'pager'        => $reports->pager,
+            'regions'      => $regions,
+            'statusCounts' => $reports->statusCounts(),
+            'selStatus'    => $status,
+            'selCategory'  => $category,
+            'selRegion'    => $regionId,
+        ]);
+    }
+
     public function submit()
     {
         $rules = [

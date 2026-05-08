@@ -20,9 +20,26 @@ class Home extends BaseController
         $users    = new UsersModel();
         $reports  = new ReportsModel();
 
+        $latestServices = (new ServicesModel())
+            ->select('services.*, regions.name as region_name')
+            ->join('regions', 'regions.id = services.region_id', 'left')
+            ->where('services.is_active', 1)
+            ->orderBy('services.created_at', 'DESC')
+            ->limit(6)
+            ->find();
+
+        $recentReports = (new ReportsModel())
+            ->select('reports.id, reports.reference, reports.category, reports.location, reports.status, reports.priority, reports.created_at, regions.name as region_name')
+            ->join('regions', 'regions.id = reports.region_id', 'left')
+            ->orderBy('reports.created_at', 'DESC')
+            ->limit(6)
+            ->find();
+
         return view('home/index', [
             'title'             => 'SmartCity PH — Government Services Portal',
             'featuredServices'  => $services->featured(6),
+            'latestServices'    => $latestServices,
+            'recentReports'     => $recentReports,
             'categoryCounts'    => $services->categoryCounts(),
             'totalServices'     => $services->where('is_active', 1)->countAllResults(),
             'totalRegions'      => $regions->where('type', 'region')->countAllResults(),

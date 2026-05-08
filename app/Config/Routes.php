@@ -22,6 +22,7 @@ $routes->get('news/(:segment)', 'News::detail/$1');
 
 $routes->get('reports', 'Reports::index');
 $routes->post('reports/submit', 'Reports::submit');
+$routes->get('community-reports', 'Reports::community');
 $routes->get('track', 'UserDashboard::trackReport');
 $routes->post('track/lookup', 'UserDashboard::trackLookup');
 
@@ -65,6 +66,8 @@ $routes->group('admin', ['filter' => 'auth'], static function ($routes) {
     $routes->get('services/edit/(:num)', 'Admin\Services::edit/$1');
     $routes->post('services/update/(:num)', 'Admin\Services::update/$1');
     $routes->get('services/delete/(:num)', 'Admin\Services::delete/$1');
+    $routes->post('services/toggle-featured/(:num)', 'Admin\Services::toggleFeatured/$1');
+    $routes->post('services/toggle-active/(:num)', 'Admin\Services::toggleActive/$1');
 
     // News CRUD
     $routes->get('news', 'Admin\News::index');
@@ -73,6 +76,7 @@ $routes->group('admin', ['filter' => 'auth'], static function ($routes) {
     $routes->get('news/edit/(:num)', 'Admin\News::edit/$1');
     $routes->post('news/update/(:num)', 'Admin\News::update/$1');
     $routes->get('news/delete/(:num)', 'Admin\News::delete/$1');
+    $routes->post('news/toggle-publish/(:num)', 'Admin\News::togglePublish/$1');
 
     // Reports
     $routes->get('reports', 'Admin\Reports::index');

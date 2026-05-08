@@ -103,6 +103,21 @@ class News extends BaseController
         return redirect()->to(base_url('admin/news'))->with('success', 'Article removed.');
     }
 
+    public function togglePublish(int $id)
+    {
+        $news = new NewsModel();
+        $a = $news->find($id);
+        if (! $a) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        $update = ['is_published' => $a['is_published'] ? 0 : 1];
+        if ($update['is_published'] && empty($a['published_at'])) {
+            $update['published_at'] = date('Y-m-d H:i:s');
+        }
+        $news->update($id, $update);
+        return redirect()->to(base_url('admin/news'))->with('success', $a['is_published'] ? 'Article unpublished — hidden from /news.' : 'Article published — live on /news.');
+    }
+
     private function collectFields(): array
     {
         return [

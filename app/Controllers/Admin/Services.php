@@ -109,6 +109,28 @@ class Services extends BaseController
         return redirect()->to(base_url('admin/services'))->with('success', 'Service removed.');
     }
 
+    public function toggleFeatured(int $id)
+    {
+        $services = new ServicesModel();
+        $s = $services->find($id);
+        if (! $s) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        $services->update($id, ['is_featured' => $s['is_featured'] ? 0 : 1]);
+        return redirect()->to(base_url('admin/services'))->with('success', $s['is_featured'] ? 'Removed from Featured.' : 'Added to Featured — now on the homepage.');
+    }
+
+    public function toggleActive(int $id)
+    {
+        $services = new ServicesModel();
+        $s = $services->find($id);
+        if (! $s) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
+        $services->update($id, ['is_active' => $s['is_active'] ? 0 : 1]);
+        return redirect()->to(base_url('admin/services'))->with('success', $s['is_active'] ? 'Service deactivated — hidden from public.' : 'Service activated — visible on /services.');
+    }
+
     private function collectFields(): array
     {
         return [

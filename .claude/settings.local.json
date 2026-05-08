@@ -17,7 +17,19 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code}\\\\n\" http://127.0.0.1:8085/transparency)",
       "Bash(curl -s -o /dev/null -w \"admin-login: %{http_code}\\\\n\" http://127.0.0.1:8085/admin-login)",
       "Bash(curl -s http://127.0.0.1:8085/api/regions)",
-      "Bash(curl -s http://127.0.0.1:8085/api/services/search?q=PhilHealth)"
+      "Bash(curl -s http://127.0.0.1:8085/api/services/search?q=PhilHealth)",
+      "Bash(curl -s -o /dev/null -w \"homepage:           %{http_code}\\\\n\" http://127.0.0.1:8085/)",
+      "Bash(curl -s -o /dev/null -w \"/services:          %{http_code}\\\\n\" http://127.0.0.1:8085/services)",
+      "Bash(curl -s -o /dev/null -w \"/news:              %{http_code}\\\\n\" http://127.0.0.1:8085/news)",
+      "Bash(curl -s -o /dev/null -w \"/community-reports: %{http_code}\\\\n\" http://127.0.0.1:8085/community-reports)",
+      "Bash(curl -s -o /dev/null -w \"/community?status=resolved: %{http_code}\\\\n\" \"http://127.0.0.1:8085/community-reports?status=resolved\")",
+      "Bash(curl -s http://127.0.0.1:8085/)",
+      "Bash(curl -s http://127.0.0.1:8085/community-reports)",
+      "Bash(curl -s \"http://127.0.0.1:8085/news\")",
+      "Bash(grep -oE \"<h[23]>[^<]{20,80}</h[23]>\")",
+      "Bash(curl -s \"http://127.0.0.1:8085/community-reports?status=resolved\")",
+      "Bash(curl -s \"http://127.0.0.1:8085/community-reports\")",
+      "Bash(git -c 'user.name=Ricky Ebarle' -c user.email=ebarlericky836@gmail.com commit -m 'feat: admin-public CRUD round-trip + Community Reports *)"
     ]
   }
 }

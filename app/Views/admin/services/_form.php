@@ -41,9 +41,18 @@
     <?php if (! empty($s['image'])): ?><p class="form-help">Current: <?= esc($s['image']) ?></p><?php endif; ?>
   </div>
   <div class="grid grid-3">
-    <label class="checkbox-row"><input type="checkbox" name="is_nationwide" value="1" <?= ! empty($s['is_nationwide']) ? 'checked' : '' ?>> Nationwide</label>
-    <label class="checkbox-row"><input type="checkbox" name="is_featured" value="1" <?= ! empty($s['is_featured']) ? 'checked' : '' ?>> Featured on homepage</label>
-    <label class="checkbox-row"><input type="checkbox" name="is_active" value="1" <?= empty($s) || ! empty($s['is_active']) ? 'checked' : '' ?>> Active</label>
+    <div>
+      <label class="checkbox-row"><input type="checkbox" name="is_nationwide" value="1" <?= ! empty($s['is_nationwide']) ? 'checked' : '' ?>> Nationwide</label>
+      <p class="form-help">Available in all 17 regions.</p>
+    </div>
+    <div>
+      <label class="checkbox-row"><input type="checkbox" name="is_featured" value="1" <?= ! empty($s['is_featured']) ? 'checked' : '' ?>> Featured</label>
+      <p class="form-help">Shown in the homepage Featured grid.</p>
+    </div>
+    <div>
+      <label class="checkbox-row"><input type="checkbox" name="is_active" value="1" <?= empty($s) || ! empty($s['is_active']) ? 'checked' : '' ?>> Active</label>
+      <p class="form-help">Visible at /services. Uncheck to hide from public.</p>
+    </div>
   </div>
   <div style="display:flex;gap:10px;margin-top:24px;">
     <button class="btn btn-primary" type="submit"><i class="fa-solid fa-save"></i> <?= $isEdit ? 'Update' : 'Create' ?> Service</button>

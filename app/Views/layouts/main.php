@@ -31,7 +31,8 @@
     <li><a href="<?= base_url('/') ?>" class="<?= $current === '/' || $current === '' ? 'active' : '' ?>">Home</a></li>
     <li><a href="<?= base_url('services') ?>" class="<?= str_starts_with($current, 'services') ? 'active' : '' ?>">Services</a></li>
     <li><a href="<?= base_url('news') ?>" class="<?= str_starts_with($current, 'news') ? 'active' : '' ?>">News</a></li>
-    <li><a href="<?= base_url('reports') ?>" class="<?= str_starts_with($current, 'reports') ? 'active' : '' ?>">Report</a></li>
+    <li><a href="<?= base_url('reports') ?>" class="<?= $current === 'reports' ? 'active' : '' ?>">Report</a></li>
+    <li><a href="<?= base_url('community-reports') ?>" class="<?= str_starts_with($current, 'community-reports') ? 'active' : '' ?>">Community</a></li>
     <li><a href="<?= base_url('transparency') ?>" class="<?= str_starts_with($current, 'transparency') ? 'active' : '' ?>">Transparency</a></li>
     <li><a href="<?= base_url('emergency') ?>" class="<?= str_starts_with($current, 'emergency') ? 'active' : '' ?>">Emergency</a></li>
     <li><a href="<?= base_url('about') ?>" class="<?= str_starts_with($current, 'about') ? 'active' : '' ?>">About</a></li>
@@ -53,6 +54,7 @@
   <a href="<?= base_url('services') ?>">Services</a>
   <a href="<?= base_url('news') ?>">News</a>
   <a href="<?= base_url('reports') ?>">Report an Issue</a>
+  <a href="<?= base_url('community-reports') ?>">Community Reports</a>
   <a href="<?= base_url('track') ?>">Track Report</a>
   <a href="<?= base_url('transparency') ?>">Transparency</a>
   <a href="<?= base_url('emergency') ?>">Emergency</a>
@@ -108,6 +110,7 @@
             <li><a href="<?= base_url('services') ?>">All Services</a></li>
             <li><a href="<?= base_url('news') ?>">News</a></li>
             <li><a href="<?= base_url('reports') ?>">Report an Issue</a></li>
+            <li><a href="<?= base_url('community-reports') ?>">Community Reports</a></li>
             <li><a href="<?= base_url('track') ?>">Track Report</a></li>
             <li><a href="<?= base_url('transparency') ?>">Transparency</a></li>
           </ul>
