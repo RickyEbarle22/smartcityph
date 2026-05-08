@@ -32,7 +32,8 @@
       "Bash(git -c 'user.name=Ricky Ebarle' -c user.email=ebarlericky836@gmail.com commit -m 'feat: admin-public CRUD round-trip + Community Reports *)",
       "Bash(taskkill //F //IM php.exe)",
       "Bash(git -c 'user.name=Ricky Ebarle' -c user.email=ebarlericky836@gmail.com commit -m 'fix: homepage category cards \"only some showing\" *)",
-      "Bash(git push *)"
+      "Bash(git push *)",
+      "Bash(git -c 'user.name=Ricky Ebarle' -c user.email=ebarlericky836@gmail.com commit -m 'fix: social welfare icon \\(Pro-only -> free\\) *)"
     ]
   }
 }

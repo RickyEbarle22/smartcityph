@@ -56,7 +56,7 @@ ob_start();
           ['Business',        'business',   'fa-briefcase',       'Business & Permits'],
           ['Civil Registry',  'civil',      'fa-id-card',         'Birth · Marriage · Death'],
           ['Education',       'education',  'fa-graduation-cap',  'Schools & Scholarships'],
-          ['Social Welfare',  'welfare',    'fa-hands-holding-heart', '4Ps · PWD · Senior'],
+          ['Social Welfare',  'welfare',    'fa-hand-holding-heart',  '4Ps · PWD · Senior'],
           ['Transportation',  'transport',  'fa-car',             'LTO Licenses & Registration'],
           ['Housing',         'housing',    'fa-house',           'NHA · Pag-IBIG'],
           ['Agriculture',     'agri',       'fa-seedling',        'DA · RSBSA · Farmers'],
