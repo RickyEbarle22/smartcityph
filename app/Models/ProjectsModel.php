@@ -13,8 +13,8 @@ class ProjectsModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = [
-        'title', 'description', 'agency', 'budget', 'status', 'region_id',
-        'start_date', 'end_date', 'progress', 'image',
+        'title', 'description', 'agency', 'agency_id', 'budget', 'amount_released',
+        'status', 'region_id', 'start_date', 'end_date', 'progress', 'image',
     ];
 
     protected $useTimestamps = true;

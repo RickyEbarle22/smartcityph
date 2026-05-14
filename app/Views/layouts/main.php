@@ -31,11 +31,11 @@
     <li><a href="<?= base_url('/') ?>" class="<?= $current === '/' || $current === '' ? 'active' : '' ?>">Home</a></li>
     <li><a href="<?= base_url('services') ?>" class="<?= str_starts_with($current, 'services') ? 'active' : '' ?>">Services</a></li>
     <li><a href="<?= base_url('news') ?>" class="<?= str_starts_with($current, 'news') ? 'active' : '' ?>">News</a></li>
+    <li><a href="<?= base_url('agencies') ?>" class="<?= str_starts_with($current, 'agencies') ? 'active' : '' ?>">Agencies</a></li>
     <li><a href="<?= base_url('reports') ?>" class="<?= $current === 'reports' ? 'active' : '' ?>">Report</a></li>
-    <li><a href="<?= base_url('community-reports') ?>" class="<?= str_starts_with($current, 'community-reports') ? 'active' : '' ?>">Community</a></li>
     <li><a href="<?= base_url('transparency') ?>" class="<?= str_starts_with($current, 'transparency') ? 'active' : '' ?>">Transparency</a></li>
     <li><a href="<?= base_url('emergency') ?>" class="<?= str_starts_with($current, 'emergency') ? 'active' : '' ?>">Emergency</a></li>
-    <li><a href="<?= base_url('about') ?>" class="<?= str_starts_with($current, 'about') ? 'active' : '' ?>">About</a></li>
+    <li><a href="<?= base_url('faqs') ?>" class="<?= str_starts_with($current, 'faqs') ? 'active' : '' ?>">FAQ</a></li>
   </ul>
   <div class="navbar-actions">
     <?php if ($loggedIn): ?>
@@ -53,10 +53,13 @@
   <a href="<?= base_url('/') ?>">Home</a>
   <a href="<?= base_url('services') ?>">Services</a>
   <a href="<?= base_url('news') ?>">News</a>
+  <a href="<?= base_url('agencies') ?>">Agencies</a>
   <a href="<?= base_url('reports') ?>">Report an Issue</a>
   <a href="<?= base_url('community-reports') ?>">Community Reports</a>
   <a href="<?= base_url('track') ?>">Track Report</a>
   <a href="<?= base_url('transparency') ?>">Transparency</a>
+  <a href="<?= base_url('foi') ?>">FOI Request</a>
+  <a href="<?= base_url('faqs') ?>">FAQ</a>
   <a href="<?= base_url('emergency') ?>">Emergency</a>
   <a href="<?= base_url('about') ?>">About</a>
   <a href="<?= base_url('contact') ?>">Contact</a>
@@ -118,8 +121,11 @@
         <div>
           <h5>Government</h5>
           <ul>
-            <li><a href="<?= base_url('about') ?>">About SmartCity PH</a></li>
+            <li><a href="<?= base_url('agencies') ?>">Agency Directory</a></li>
+            <li><a href="<?= base_url('foi') ?>">FOI Request</a></li>
+            <li><a href="<?= base_url('faqs') ?>">FAQs</a></li>
             <li><a href="<?= base_url('emergency') ?>">Emergency Hotlines</a></li>
+            <li><a href="<?= base_url('about') ?>">About SmartCity PH</a></li>
             <li><a href="<?= base_url('contact') ?>">Contact</a></li>
             <li><a href="https://gov.ph" target="_blank" rel="noopener">Republic of the Philippines</a></li>
           </ul>

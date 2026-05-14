@@ -28,6 +28,14 @@ $routes->post('track/lookup', 'UserDashboard::trackLookup');
 
 $routes->get('transparency', 'Transparency::index');
 
+$routes->get('agencies', 'Agencies::index');
+$routes->get('agencies/(:segment)', 'Agencies::detail/$1');
+
+$routes->get('foi', 'Foi::index');
+$routes->post('foi/submit', 'Foi::submit');
+
+$routes->get('faqs', 'Faqs::index');
+
 // ── API (JSON) ──────────────────────────────
 $routes->get('api/services/search', 'Services::apiSearch');
 $routes->get('api/regions', 'Services::apiRegions');
@@ -94,4 +102,35 @@ $routes->group('admin', ['filter' => 'auth'], static function ($routes) {
     $routes->get('users', 'Admin\Users::index');
     $routes->get('users/view/(:num)', 'Admin\Users::view/$1');
     $routes->post('users/toggle/(:num)', 'Admin\Users::toggle/$1');
+
+    // Agencies CRUD
+    $routes->get('agencies', 'Admin\Agencies::index');
+    $routes->get('agencies/create', 'Admin\Agencies::create');
+    $routes->post('agencies/store', 'Admin\Agencies::store');
+    $routes->get('agencies/edit/(:num)', 'Admin\Agencies::edit/$1');
+    $routes->post('agencies/update/(:num)', 'Admin\Agencies::update/$1');
+    $routes->get('agencies/delete/(:num)', 'Admin\Agencies::delete/$1');
+    $routes->post('agencies/toggle-active/(:num)', 'Admin\Agencies::toggleActive/$1');
+
+    // Projects CRUD
+    $routes->get('projects', 'Admin\Projects::index');
+    $routes->get('projects/create', 'Admin\Projects::create');
+    $routes->post('projects/store', 'Admin\Projects::store');
+    $routes->get('projects/edit/(:num)', 'Admin\Projects::edit/$1');
+    $routes->post('projects/update/(:num)', 'Admin\Projects::update/$1');
+    $routes->get('projects/delete/(:num)', 'Admin\Projects::delete/$1');
+
+    // FAQs CRUD
+    $routes->get('faqs', 'Admin\Faqs::index');
+    $routes->get('faqs/create', 'Admin\Faqs::create');
+    $routes->post('faqs/store', 'Admin\Faqs::store');
+    $routes->get('faqs/edit/(:num)', 'Admin\Faqs::edit/$1');
+    $routes->post('faqs/update/(:num)', 'Admin\Faqs::update/$1');
+    $routes->get('faqs/delete/(:num)', 'Admin\Faqs::delete/$1');
+    $routes->post('faqs/toggle-active/(:num)', 'Admin\Faqs::toggleActive/$1');
+
+    // FOI Requests
+    $routes->get('fois', 'Admin\Fois::index');
+    $routes->get('fois/view/(:num)', 'Admin\Fois::view/$1');
+    $routes->post('fois/respond/(:num)', 'Admin\Fois::respond/$1');
 });

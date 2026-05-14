@@ -15,8 +15,8 @@ class ServicesModel extends Model
     protected $allowedFields    = [
         'name', 'slug', 'category', 'short_desc', 'description', 'icon', 'image',
         'requirements', 'steps', 'fee', 'processing_time', 'office', 'contact',
-        'website', 'agency', 'region_id', 'is_nationwide', 'is_featured',
-        'is_active', 'avg_rating', 'total_ratings',
+        'website', 'agency', 'agency_id', 'region_id', 'is_nationwide', 'is_featured',
+        'is_popular', 'is_active', 'avg_rating', 'total_ratings',
     ];
 
     protected $useTimestamps = true;

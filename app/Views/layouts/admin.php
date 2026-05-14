@@ -23,8 +23,12 @@
       <div class="group-label">Content</div>
       <a href="<?= base_url('admin/services') ?>" class="<?= str_starts_with($current, 'admin/services') ? 'active' : '' ?>"><i class="fa-solid fa-list-check"></i> Services</a>
       <a href="<?= base_url('admin/news') ?>" class="<?= str_starts_with($current, 'admin/news') ? 'active' : '' ?>"><i class="fa-solid fa-newspaper"></i> News</a>
+      <a href="<?= base_url('admin/agencies') ?>" class="<?= str_starts_with($current, 'admin/agencies') ? 'active' : '' ?>"><i class="fa-solid fa-landmark"></i> Agencies</a>
+      <a href="<?= base_url('admin/projects') ?>" class="<?= str_starts_with($current, 'admin/projects') ? 'active' : '' ?>"><i class="fa-solid fa-chart-line"></i> Projects</a>
+      <a href="<?= base_url('admin/faqs') ?>" class="<?= str_starts_with($current, 'admin/faqs') ? 'active' : '' ?>"><i class="fa-regular fa-circle-question"></i> FAQs</a>
       <div class="group-label">Citizens</div>
       <a href="<?= base_url('admin/reports') ?>" class="<?= str_starts_with($current, 'admin/reports') ? 'active' : '' ?>"><i class="fa-solid fa-flag"></i> Reports</a>
+      <a href="<?= base_url('admin/fois') ?>" class="<?= str_starts_with($current, 'admin/fois') ? 'active' : '' ?>"><i class="fa-solid fa-folder-open"></i> FOI Requests</a>
       <a href="<?= base_url('admin/users') ?>" class="<?= str_starts_with($current, 'admin/users') ? 'active' : '' ?>"><i class="fa-solid fa-users"></i> Users</a>
       <div class="group-label">System</div>
       <a href="<?= base_url('admin/regions') ?>" class="<?= str_starts_with($current, 'admin/regions') ? 'active' : '' ?>"><i class="fa-solid fa-map-location-dot"></i> Regions</a>
