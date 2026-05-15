@@ -8,6 +8,9 @@ class RegionsSeeder extends Seeder
 {
     public function run()
     {
+        if ($this->db->table('regions')->countAllResults() > 0) {
+            return;
+        }
         $now = date('Y-m-d H:i:s');
         $regions = [
             ['name' => 'National Capital Region',                   'slug' => 'ncr',         'code' => 'NCR',  'lat' => 14.5995,  'lng' => 120.9842, 'pop' => 13484462],

@@ -87,6 +87,7 @@ ob_start();
       <div class="svc-grid">
         <?php foreach ($featuredServices as $s): ?>
           <a class="svc-card float-card" href="<?= base_url('services/' . $s['slug']) ?>" data-tilt>
+            <?php if (! empty($s['is_popular'])): ?><span class="popular-badge"><i class="fa-solid fa-fire"></i> Popular</span><?php endif; ?>
             <div class="svc-icon"><i class="fa-solid <?= esc($s['icon'] ?: 'fa-cog') ?>"></i></div>
             <span class="tag"><?= esc($s['category']) ?></span>
             <h3><?= esc($s['name']) ?></h3>
@@ -123,6 +124,7 @@ ob_start();
     <div class="svc-grid">
       <?php foreach ($latestServices as $s): ?>
         <a class="svc-card float-card" href="<?= base_url('services/' . $s['slug']) ?>">
+          <?php if (! empty($s['is_popular'])): ?><span class="popular-badge"><i class="fa-solid fa-fire"></i> Popular</span><?php endif; ?>
           <div class="svc-icon"><i class="fa-solid <?= esc($s['icon'] ?: 'fa-cog') ?>"></i></div>
           <span class="tag"><?= esc($s['category']) ?></span>
           <h3><?= esc($s['name']) ?></h3>

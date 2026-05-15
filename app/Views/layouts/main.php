@@ -28,22 +28,26 @@
     <span>SmartCity <span class="gradient-flag">PH</span></span>
   </a>
   <ul class="navbar-menu">
-    <li><a href="<?= base_url('/') ?>" class="<?= $current === '/' || $current === '' ? 'active' : '' ?>">Home</a></li>
-    <li><a href="<?= base_url('services') ?>" class="<?= str_starts_with($current, 'services') ? 'active' : '' ?>">Services</a></li>
-    <li><a href="<?= base_url('news') ?>" class="<?= str_starts_with($current, 'news') ? 'active' : '' ?>">News</a></li>
-    <li><a href="<?= base_url('agencies') ?>" class="<?= str_starts_with($current, 'agencies') ? 'active' : '' ?>">Agencies</a></li>
-    <li><a href="<?= base_url('reports') ?>" class="<?= $current === 'reports' ? 'active' : '' ?>">Report</a></li>
-    <li><a href="<?= base_url('transparency') ?>" class="<?= str_starts_with($current, 'transparency') ? 'active' : '' ?>">Transparency</a></li>
-    <li><a href="<?= base_url('emergency') ?>" class="<?= str_starts_with($current, 'emergency') ? 'active' : '' ?>">Emergency</a></li>
-    <li><a href="<?= base_url('faqs') ?>" class="<?= str_starts_with($current, 'faqs') ? 'active' : '' ?>">FAQ</a></li>
+    <li><a href="<?= base_url('/') ?>" class="<?= $current === '/' || $current === '' ? 'active' : '' ?>" data-i18n-en="Home" data-i18n-fil="Tahanan">Home</a></li>
+    <li><a href="<?= base_url('services') ?>" class="<?= str_starts_with($current, 'services') ? 'active' : '' ?>" data-i18n-en="Services" data-i18n-fil="Serbisyo">Services</a></li>
+    <li><a href="<?= base_url('news') ?>" class="<?= str_starts_with($current, 'news') ? 'active' : '' ?>" data-i18n-en="News" data-i18n-fil="Balita">News</a></li>
+    <li><a href="<?= base_url('agencies') ?>" class="<?= str_starts_with($current, 'agencies') ? 'active' : '' ?>" data-i18n-en="Agencies" data-i18n-fil="Ahensiya">Agencies</a></li>
+    <li><a href="<?= base_url('reports') ?>" class="<?= $current === 'reports' ? 'active' : '' ?>" data-i18n-en="Report" data-i18n-fil="Mag-Ulat">Report</a></li>
+    <li><a href="<?= base_url('transparency') ?>" class="<?= str_starts_with($current, 'transparency') ? 'active' : '' ?>" data-i18n-en="Transparency" data-i18n-fil="Transparensya">Transparency</a></li>
+    <li><a href="<?= base_url('emergency') ?>" class="<?= str_starts_with($current, 'emergency') ? 'active' : '' ?>" data-i18n-en="Emergency" data-i18n-fil="Emergency">Emergency</a></li>
+    <li><a href="<?= base_url('faqs') ?>" class="<?= str_starts_with($current, 'faqs') ? 'active' : '' ?>" data-i18n-en="FAQ" data-i18n-fil="Mga Tanong">FAQ</a></li>
   </ul>
   <div class="navbar-actions">
+    <button type="button" class="lang-toggle" id="langToggle" aria-label="Toggle language" title="Switch language">
+      <i class="fa-solid fa-globe"></i>
+      <span class="lang-current">EN</span>
+    </button>
     <?php if ($loggedIn): ?>
-      <a class="btn btn-ghost btn-sm" href="<?= base_url('user/dashboard') ?>"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-      <a class="btn btn-outline btn-sm" href="<?= base_url('logout') ?>">Sign Out</a>
+      <a class="btn btn-ghost btn-sm" href="<?= base_url('user/dashboard') ?>"><i class="fa-solid fa-gauge"></i> <span data-i18n-en="Dashboard" data-i18n-fil="Dashboard">Dashboard</span></a>
+      <a class="btn btn-outline btn-sm" href="<?= base_url('logout') ?>" data-i18n-en="Sign Out" data-i18n-fil="Mag-Sign Out">Sign Out</a>
     <?php else: ?>
-      <a class="btn btn-ghost btn-sm" href="<?= base_url('login') ?>">Sign In</a>
-      <a class="btn btn-primary btn-sm" href="<?= base_url('register') ?>">Get Started</a>
+      <a class="btn btn-ghost btn-sm" href="<?= base_url('login') ?>" data-i18n-en="Sign In" data-i18n-fil="Mag-Sign In">Sign In</a>
+      <a class="btn btn-primary btn-sm" href="<?= base_url('register') ?>" data-i18n-en="Get Started" data-i18n-fil="Magsimula">Get Started</a>
     <?php endif; ?>
   </div>
   <button class="nav-toggle" type="button" aria-label="Toggle menu" aria-expanded="false"><i class="fa-solid fa-bars"></i></button>
@@ -143,14 +147,27 @@
       <div class="footer-bottom">
         <span>© <?= date('Y') ?> SmartCity PH — Republic of the Philippines. All Rights Reserved.</span>
         <span style="display:flex;gap:14px;align-items:center;">
-          <a href="#" style="color:var(--text-muted);">English</a>
+          <button type="button" class="lang-link" data-set-lang="en">English</button>
           <span style="color:var(--text-muted);">|</span>
-          <a href="#" style="color:var(--text-muted);">Filipino</a>
+          <button type="button" class="lang-link" data-set-lang="fil">Filipino</button>
         </span>
       </div>
     </div>
   </div>
 </footer>
+
+<div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite" aria-label="Cookie consent">
+  <div class="cookie-banner-inner">
+    <div class="cookie-text">
+      <i class="fa-solid fa-cookie-bite" style="color:var(--gold);"></i>
+      <span><strong>We use cookies</strong> to keep you signed in and remember your preferences. By continuing, you agree to our use of cookies in accordance with the <a href="<?= base_url('about') ?>" style="color:var(--cyan);">Data Privacy Act of 2012 (RA 10173)</a>.</span>
+    </div>
+    <div class="cookie-actions">
+      <button type="button" class="btn btn-ghost btn-sm" id="cookieDecline">Decline</button>
+      <button type="button" class="btn btn-primary btn-sm" id="cookieAccept">Accept</button>
+    </div>
+  </div>
+</div>
 
 <script>window.SCPH_BASE = '<?= rtrim(base_url(), '/') ?>';</script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -165,6 +182,51 @@
 <?php endif; ?>
 <script src="<?= base_url('js/animations.js') ?>?v=3"></script>
 <script>if (window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
+<script>
+(function(){
+  // ── Language toggle (EN / FIL) ─────────────────────────
+  var KEY = 'scph_lang';
+  function apply(lang){
+    document.documentElement.setAttribute('lang', lang === 'fil' ? 'fil' : 'en');
+    document.querySelectorAll('[data-i18n-en]').forEach(function(el){
+      var txt = lang === 'fil' ? el.getAttribute('data-i18n-fil') : el.getAttribute('data-i18n-en');
+      if (txt) el.textContent = txt;
+    });
+    var label = document.querySelector('#langToggle .lang-current');
+    if (label) label.textContent = lang === 'fil' ? 'FIL' : 'EN';
+  }
+  function set(lang){ try { localStorage.setItem(KEY, lang); } catch(e){} apply(lang); }
+  var saved = 'en';
+  try { saved = localStorage.getItem(KEY) || 'en'; } catch(e){}
+  apply(saved);
+  var btn = document.getElementById('langToggle');
+  if (btn) btn.addEventListener('click', function(){
+    var current = (function(){ try { return localStorage.getItem(KEY) || 'en'; } catch(e){ return 'en'; } })();
+    set(current === 'fil' ? 'en' : 'fil');
+  });
+  document.querySelectorAll('[data-set-lang]').forEach(function(el){
+    el.addEventListener('click', function(){ set(el.getAttribute('data-set-lang')); });
+  });
+
+  // ── Cookie consent banner ──────────────────────────────
+  var COOKIE = 'scph_cookie_consent';
+  var banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+  var seen = null;
+  try { seen = localStorage.getItem(COOKIE); } catch(e){}
+  if (!seen) {
+    setTimeout(function(){ banner.classList.add('is-visible'); }, 600);
+  }
+  function dismiss(value){
+    try { localStorage.setItem(COOKIE, value); } catch(e){}
+    banner.classList.remove('is-visible');
+  }
+  var ok = document.getElementById('cookieAccept');
+  var no = document.getElementById('cookieDecline');
+  if (ok) ok.addEventListener('click', function(){ dismiss('accepted'); });
+  if (no) no.addEventListener('click', function(){ dismiss('declined'); });
+})();
+</script>
 <?= $extraJs ?? '' ?>
 </body>
 </html>

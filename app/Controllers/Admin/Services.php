@@ -3,6 +3,7 @@
 namespace App\Controllers\Admin;
 
 use App\Controllers\BaseController;
+use App\Models\AgenciesModel;
 use App\Models\RegionsModel;
 use App\Models\ServicesModel;
 
@@ -26,8 +27,9 @@ class Services extends BaseController
     public function create()
     {
         return view('admin/services/create', [
-            'title'   => 'New Service — SmartCity PH',
-            'regions' => (new RegionsModel())->regionsOnly()->find(),
+            'title'    => 'New Service — SmartCity PH',
+            'regions'  => (new RegionsModel())->regionsOnly()->find(),
+            'agencies' => (new AgenciesModel())->where('is_active', 1)->orderBy('name', 'ASC')->find(),
         ]);
     }
 
@@ -65,9 +67,10 @@ class Services extends BaseController
             throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
         }
         return view('admin/services/edit', [
-            'title'   => 'Edit Service — SmartCity PH',
-            'service' => $service,
-            'regions' => (new RegionsModel())->regionsOnly()->find(),
+            'title'    => 'Edit Service — SmartCity PH',
+            'service'  => $service,
+            'regions'  => (new RegionsModel())->regionsOnly()->find(),
+            'agencies' => (new AgenciesModel())->where('is_active', 1)->orderBy('name', 'ASC')->find(),
         ]);
     }
 
@@ -147,9 +150,11 @@ class Services extends BaseController
             'contact'         => $this->request->getPost('contact'),
             'website'         => $this->request->getPost('website'),
             'agency'          => $this->request->getPost('agency'),
+            'agency_id'       => $this->request->getPost('agency_id') ?: null,
             'region_id'       => $this->request->getPost('region_id') ?: null,
             'is_nationwide'   => $this->request->getPost('is_nationwide') ? 1 : 0,
             'is_featured'     => $this->request->getPost('is_featured') ? 1 : 0,
+            'is_popular'      => $this->request->getPost('is_popular') ? 1 : 0,
             'is_active'       => $this->request->getPost('is_active') ? 1 : 0,
         ];
     }

@@ -8,6 +8,9 @@ class ServicesSeeder extends Seeder
 {
     public function run()
     {
+        if ($this->db->table('services')->countAllResults() > 0) {
+            return;
+        }
         $now  = date('Y-m-d H:i:s');
         $ncr  = $this->db->table('regions')->where('slug', 'ncr')->get()->getRowArray();
         $r4a  = $this->db->table('regions')->where('slug', 'region-4a')->get()->getRowArray();

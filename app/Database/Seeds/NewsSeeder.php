@@ -8,6 +8,9 @@ class NewsSeeder extends Seeder
 {
     public function run()
     {
+        if ($this->db->table('news')->countAllResults() > 0) {
+            return;
+        }
         $now = date('Y-m-d H:i:s');
         $articles = [
             [

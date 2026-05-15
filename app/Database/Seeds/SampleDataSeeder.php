@@ -8,6 +8,9 @@ class SampleDataSeeder extends Seeder
 {
     public function run()
     {
+        if ($this->db->table('admins')->where('username', 'admin')->countAllResults() > 0) {
+            return; // sample data already loaded
+        }
         $now = date('Y-m-d H:i:s');
 
         // ── Admin ─────────────────────────────────────────

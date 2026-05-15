@@ -20,7 +20,19 @@
   </div>
   <div class="grid grid-2">
     <div class="form-group"><label class="form-label">Office</label><input class="form-control" type="text" name="office" value="<?= esc($s['office'] ?? '') ?>"></div>
-    <div class="form-group"><label class="form-label">Agency</label><input class="form-control" type="text" name="agency" value="<?= esc($s['agency'] ?? '') ?>"></div>
+    <div class="form-group"><label class="form-label">Agency (display text)</label><input class="form-control" type="text" name="agency" value="<?= esc($s['agency'] ?? '') ?>" placeholder="e.g. PhilHealth, DICT"></div>
+  </div>
+  <div class="form-group">
+    <label class="form-label">Linked Agency (optional)</label>
+    <select class="form-select" name="agency_id">
+      <option value="">— None —</option>
+      <?php foreach (($agencies ?? []) as $a): ?>
+        <option value="<?= (int) $a['id'] ?>" <?= (int) ($s['agency_id'] ?? 0) === (int) $a['id'] ? 'selected' : '' ?>>
+          <?= esc($a['acronym'] ? $a['acronym'] . ' — ' . $a['name'] : $a['name']) ?>
+        </option>
+      <?php endforeach; ?>
+    </select>
+    <p class="form-help">Connecting to an entry in the Agencies directory enables cross-linking from /agencies/{slug}.</p>
   </div>
   <div class="grid grid-2">
     <div class="form-group"><label class="form-label">Contact Number</label><input class="form-control" type="text" name="contact" value="<?= esc($s['contact'] ?? '') ?>"></div>
@@ -40,7 +52,7 @@
   <div class="form-group"><label class="form-label">Image (max 2MB)</label><input class="form-control" type="file" name="image" accept="image/jpeg,image/png,image/webp">
     <?php if (! empty($s['image'])): ?><p class="form-help">Current: <?= esc($s['image']) ?></p><?php endif; ?>
   </div>
-  <div class="grid grid-3">
+  <div class="grid grid-2" style="margin-bottom:8px;">
     <div>
       <label class="checkbox-row"><input type="checkbox" name="is_nationwide" value="1" <?= ! empty($s['is_nationwide']) ? 'checked' : '' ?>> Nationwide</label>
       <p class="form-help">Available in all 17 regions.</p>
@@ -48,6 +60,12 @@
     <div>
       <label class="checkbox-row"><input type="checkbox" name="is_featured" value="1" <?= ! empty($s['is_featured']) ? 'checked' : '' ?>> Featured</label>
       <p class="form-help">Shown in the homepage Featured grid.</p>
+    </div>
+  </div>
+  <div class="grid grid-2">
+    <div>
+      <label class="checkbox-row"><input type="checkbox" name="is_popular" value="1" <?= ! empty($s['is_popular']) ? 'checked' : '' ?>> Popular</label>
+      <p class="form-help">Shows a gold POPULAR badge on the service card.</p>
     </div>
     <div>
       <label class="checkbox-row"><input type="checkbox" name="is_active" value="1" <?= empty($s) || ! empty($s['is_active']) ? 'checked' : '' ?>> Active</label>
