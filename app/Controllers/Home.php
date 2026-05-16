@@ -24,6 +24,7 @@ class Home extends BaseController
             ->select('services.*, regions.name as region_name')
             ->join('regions', 'regions.id = services.region_id', 'left')
             ->where('services.is_active', 1)
+            ->where('services.is_featured', 0)
             ->orderBy('services.created_at', 'DESC')
             ->limit(6)
             ->find();

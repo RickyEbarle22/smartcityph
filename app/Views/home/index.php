@@ -49,6 +49,7 @@ ob_start();
       <h2>Find services by what you need</h2>
       <p>Eight curated categories spanning health, business, civil registry, education, social welfare, and more.</p>
     </div>
+    <div class="cat-strip-outer">
     <div class="cat-strip">
       <?php
         $cats = [
@@ -72,6 +73,7 @@ ob_start();
       </a>
       <?php endforeach; ?>
     </div>
+    </div><!-- /.cat-strip-outer -->
   </div>
 </section>
 
@@ -244,7 +246,8 @@ ob_start();
       <p>Anonymized snapshot of issues filed by your fellow Filipinos and how they're being handled.</p>
     </div>
     <div class="glass-card" style="padding:18px;overflow:hidden;">
-      <table class="data" style="width:100%;border-collapse:collapse;">
+      <div style="overflow-x:auto;-webkit-overflow-scrolling:touch;">
+      <table class="data" style="width:100%;border-collapse:collapse;min-width:580px;">
         <thead><tr><th>Reference</th><th>Category</th><th>Location</th><th>Region</th><th>Status</th><th>Priority</th><th>Date</th></tr></thead>
         <tbody>
           <?php foreach ($recentReports as $r): ?>
@@ -260,6 +263,7 @@ ob_start();
           <?php endforeach; ?>
         </tbody>
       </table>
+      </div>
     </div>
     <div class="text-center mt-4">
       <a class="btn btn-outline" href="<?= base_url('community-reports') ?>">View all community reports <i class="fa-solid fa-arrow-right"></i></a>
