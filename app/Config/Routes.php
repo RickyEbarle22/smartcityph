@@ -39,6 +39,9 @@ $routes->get('faqs', 'Faqs::index');
 // ── API (JSON) ──────────────────────────────
 $routes->get('api/services/search', 'Services::apiSearch');
 $routes->get('api/regions', 'Services::apiRegions');
+$routes->get('api/report-status/(:segment)', 'Api::reportStatus/$1');
+$routes->get('api/latest-news', 'Api::latestNews');
+$routes->get('api/featured-services', 'Api::featuredServices');
 
 // ── Citizen Auth ────────────────────────────
 $routes->get('login', 'UserAuth::login');

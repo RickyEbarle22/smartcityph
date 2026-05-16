@@ -74,14 +74,14 @@ $updatedAt   = $report['updated_at'] ?? ($report['created_at'] ?? null);
           <h2 style="font-family:var(--font-head);color:var(--gold);"><?= esc($report['reference']) ?></h2>
           <hr style="border:0;border-top:1px solid var(--border);margin:18px 0;">
           <dl style="display:grid;grid-template-columns:auto 1fr;gap:10px 16px;">
-            <dt style="color:var(--text-muted);">Status</dt><dd><span class="badge badge-<?= esc($report['status']) ?>"><?= esc($report['status']) ?></span></dd>
+            <dt style="color:var(--text-muted);">Status</dt><dd><span class="badge badge-<?= esc($report['status']) ?>" data-live-status-badge><?= esc($report['status']) ?></span></dd>
             <dt style="color:var(--text-muted);">Priority</dt><dd><span class="badge badge-<?= esc($report['priority']) ?>"><?= esc($report['priority']) ?></span></dd>
             <dt style="color:var(--text-muted);">Category</dt><dd><?= esc($report['category']) ?></dd>
             <dt style="color:var(--text-muted);">Region</dt><dd><?= esc($report['region_name'] ?? '—') ?></dd>
             <dt style="color:var(--text-muted);">Reported</dt><dd><?= esc(date('F j, Y g:i A', strtotime($report['created_at']))) ?></dd>
             <?php if (! empty($updatedAt)): ?>
               <dt style="color:var(--text-muted);">Last updated</dt>
-              <dd style="color:var(--cyan);"><i class="fa-regular fa-clock" style="margin-right:6px;"></i><?= esc(date('F j, Y g:i A', strtotime($updatedAt))) ?></dd>
+              <dd style="color:var(--cyan);"><i class="fa-regular fa-clock" style="margin-right:6px;"></i><span data-live-updated><?= esc(date('F j, Y g:i A', strtotime($updatedAt))) ?></span></dd>
             <?php endif; ?>
             <?php if (! empty($report['resolved_at'])): ?>
               <dt style="color:var(--text-muted);">Resolved</dt>
@@ -98,21 +98,19 @@ $updatedAt   = $report['updated_at'] ?? ($report['created_at'] ?? null);
         </div>
       </div>
 
-      <?php if (! empty($report['admin_notes'])): ?>
-        <div class="official-response mt-3">
-          <div class="or-header">
-            <i class="fa-solid fa-landmark"></i>
-            <div>
-              <span class="or-kicker">Official Government Response</span>
-              <span class="or-meta">Updated <?= esc(date('F j, Y g:i A', strtotime($updatedAt))) ?></span>
-            </div>
+      <div class="official-response mt-3" data-live-notes <?= empty($report['admin_notes']) ? 'style="display:none;"' : '' ?>>
+        <div class="or-header">
+          <i class="fa-solid fa-landmark"></i>
+          <div>
+            <span class="or-kicker">Official Government Response</span>
+            <span class="or-meta">Updated <span data-live-updated><?= esc(date('F j, Y g:i A', strtotime($updatedAt))) ?></span></span>
           </div>
-          <p class="or-body"><?= nl2br(esc($report['admin_notes'])) ?></p>
-          <?php if (! empty($report['assigned_to'])): ?>
-            <p class="or-assigned"><i class="fa-solid fa-user-shield"></i> Handled by <strong><?= esc($report['assigned_to']) ?></strong></p>
-          <?php endif; ?>
         </div>
-      <?php endif; ?>
+        <p class="or-body" data-live-notes-body><?= nl2br(esc($report['admin_notes'] ?? '')) ?></p>
+        <?php if (! empty($report['assigned_to'])): ?>
+          <p class="or-assigned"><i class="fa-solid fa-user-shield"></i> Handled by <strong><?= esc($report['assigned_to']) ?></strong></p>
+        <?php endif; ?>
+      </div>
 
     <?php else: ?>
       <div class="empty"><i class="fa-solid fa-magnifying-glass"></i><h3>Enter a reference number</h3><p>Use the form above to track a previously submitted report.</p></div>

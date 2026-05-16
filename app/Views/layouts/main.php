@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
-<link rel="stylesheet" href="<?= base_url('css/main.css') ?>?v=3">
+<link rel="stylesheet" href="<?= base_url('css/main.css') ?>?v=4">
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -181,6 +181,7 @@
   <script src="<?= base_url('js/hero3d.js') ?>?v=3"></script>
 <?php endif; ?>
 <script src="<?= base_url('js/animations.js') ?>?v=3"></script>
+<script src="<?= base_url('js/live-updates.js') ?>?v=1" defer></script>
 <script>if (window.AOS) AOS.init({ once: true, duration: 700, easing: 'ease-out-cubic' });</script>
 <script>
 (function(){
