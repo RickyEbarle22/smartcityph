@@ -53,17 +53,44 @@ class Reports extends BaseController
         }
 
         $reports = new ReportsModel();
-        $status  = $this->request->getPost('status');
+        $existing = $reports->find($id);
+        if (! $existing) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound();
+        }
 
-        $update = [
-            'status'      => $status,
-            'priority'    => $this->request->getPost('priority') ?: 'medium',
-            'admin_notes' => $this->request->getPost('admin_notes'),
-            'assigned_to' => $this->request->getPost('assigned_to'),
-            'resolved_at' => $status === 'resolved' ? date('Y-m-d H:i:s') : null,
-        ];
+        $status   = $this->request->getPost('status');
+        $newNotes = trim((string) $this->request->getPost('admin_notes'));
+        $hasNotes = $this->request->getPost('admin_notes') !== null;
+
+        $update = ['status' => $status];
+
+        if ($this->request->getPost('priority') !== null) {
+            $update['priority'] = $this->request->getPost('priority') ?: ($existing['priority'] ?? 'medium');
+        }
+
+        if ($this->request->getPost('assigned_to') !== null) {
+            $update['assigned_to'] = $this->request->getPost('assigned_to');
+        }
+
+        if ($hasNotes && $newNotes !== '') {
+            $update['admin_notes'] = $newNotes;
+        }
+
+        if ($status === 'resolved') {
+            $update['resolved_at'] = date('Y-m-d H:i:s');
+        } elseif ($existing['status'] === 'resolved' && $status !== 'resolved') {
+            $update['resolved_at'] = null;
+        }
 
         $reports->update($id, $update);
-        return redirect()->to(base_url('admin/reports/view/' . $id))->with('success', 'Report status updated.');
+
+        $label = ucfirst(str_replace('_', ' ', $status));
+        $msg   = 'Report ' . $existing['reference'] . ' updated to ' . $label . '.';
+
+        $back = $this->request->getPost('return_to') === 'view'
+            ? base_url('admin/reports/view/' . $id)
+            : base_url('admin/reports');
+
+        return redirect()->to($back)->with('success', $msg);
     }
 }
